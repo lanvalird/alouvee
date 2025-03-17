@@ -1,22 +1,22 @@
-import Dexie, { type EntityTable } from "dexie";
+import Dexie, { type EntityTable } from 'dexie'
 
 interface Note {
-  id: number;
-  title: string;
-  content: string;
+  id: number
+  title: string
+  content: string
 }
 
-const db = new Dexie("Alouvee") as Dexie & {
+const db = new Dexie('Alouvee') as Dexie & {
   notes: EntityTable<
     Note,
-    "id" // primary key "id" (for the typings only)
-  >;
-};
+    'id' // primary key "id" (for the typings only)
+  >
+}
 
 // Schema declaration:
 db.version(1).stores({
-  notes: "++id, title, content", // primary key "id" (for the runtime!)
-});
+  notes: '++id, title, content', // primary key "id" (for the runtime!)
+})
 
-export type { Note };
-export { db };
+export type { Note }
+export { db }

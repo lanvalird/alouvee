@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   box-sizing: border-box;
@@ -23,7 +23,9 @@
 
     border-radius: var(--radius-md);
     border-width: 1px;
-    border-color: var(--text-color);
+    border-color: var(--color-gray-700);
+
+    color: var(--color-gray-800);
 
     text-align: center;
     text-decoration: none;
@@ -49,5 +51,21 @@
     background-color: none;
     border-color: #e5b2f0;
     color: #53295c;
+  }
+
+  .card {
+    @apply overflow-auto rounded-md bg-white shadow-md;
+
+    > .card-header,
+    > .card-footer {
+      @apply flex min-h-8 items-center justify-center gap-2 border-t border-b border-gray-300 bg-gray-100 p-2;
+    }
+    > .card-header > :is(h2, h3, h4, h5, h6) {
+      @apply text-sm font-bold;
+    }
+
+    > .card-body {
+      @apply p-4;
+    }
   }
 }

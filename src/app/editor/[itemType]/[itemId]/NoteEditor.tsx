@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { db, Note } from "@/libs/db";
-import { useLiveQuery } from "dexie-react-hooks";
-import { useRouter } from "next/navigation";
+import { db, Note } from '@/libs/db'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { useRouter } from 'next/navigation'
 
 export default function NoteEditor({ noteId }: { noteId: number }) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const note = useLiveQuery(() => db.notes.get(noteId));
+  const note = useLiveQuery(() => db.notes.get(noteId))
 
   function saveNote(note: Partial<Note>) {
-    db.notes.update(noteId, note);
+    db.notes.update(noteId, note)
   }
 
   return (
     <main className="flex flex-col">
-      <h1 className="mb-2">{note?.title || "..."}</h1>
+      <h1 className="mb-2">{note?.title || '...'}</h1>
       {note ? (
         <>
           <input
@@ -34,11 +34,11 @@ export default function NoteEditor({ noteId }: { noteId: number }) {
           />
         </>
       ) : (
-        "загрузка"
+        'loading'
       )}
       <button className="btn" onClick={() => router.back()}>
-        Назад
+        Return
       </button>
     </main>
-  );
+  )
 }
